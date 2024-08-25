@@ -1,4 +1,4 @@
-package io.artsok.scratchgame.pojo.symbol;
+package io.artsok.scratchgame.pojo.symbols;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,10 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public record Symbol(
-    @JsonProperty("type") SymbolCategory type,
+    SymbolCategory type,
     @JsonProperty("reward_multiplier") Double rewardMultiplier,
-    @JsonProperty("impact") Impact impact,
-    @JsonProperty("extra") Double extra) {
+    Impact impact,
+    Double extra) {
 
 }
 

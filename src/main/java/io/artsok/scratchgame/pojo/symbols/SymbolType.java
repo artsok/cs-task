@@ -1,7 +1,7 @@
-package io.artsok.scratchgame.pojo.symbol;
+package io.artsok.scratchgame.pojo.symbols;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.artsok.scratchgame.exceptions.SymbolNotFoundException;
+import io.artsok.scratchgame.exception.SymbolNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -26,8 +26,8 @@ public enum SymbolType {
   /**
    * Method to convert 10x,5x,+1000,+500 (workaround).
    *
-   * @param name
-   * @return
+   * @param name - {@link String}.
+   * @return - {@link SymbolType}.
    */
   @JsonCreator
   public static SymbolType fromName(String name) {

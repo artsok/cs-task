@@ -1,4 +1,4 @@
-package io.artsok.scratchgame.pojo.symbol;
+package io.artsok.scratchgame.pojo.symbols;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -2,9 +2,16 @@ package io.artsok.scratchgame.pojo.wincombinations;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public enum WinGroup {
-  @JsonProperty("standard")
-  STANDARD,
-  @JsonProperty("bonus")
-  BONUS
+public enum WinSymbolGroup {
+  @JsonProperty("same_symbols")
+  SAME_SYMBOLS,
+  @JsonProperty("horizontally_linear_symbols")
+  HORIZONTALLY_LINEAR_SYMBOLS,
+  @JsonProperty("vertically_linear_symbols")
+  VERTICALLY_LINEAR_SYMBOLS,
+  @JsonProperty("ltr_diagonally_linear_symbols")
+  LTR_DIAGONALLY_LINEAR_SYMBOLS,
+  @JsonProperty("rtl_diagonally_linear_symbols")
+  RTL_DIAGONALLY_LINEAR_SYMBOLS
+
 }

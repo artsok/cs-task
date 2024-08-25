@@ -1,4 +1,4 @@
-package io.artsok.scratchgame.exceptions;
+package io.artsok.scratchgame.exception;
 
 import lombok.RequiredArgsConstructor;
 
