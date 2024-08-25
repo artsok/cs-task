@@ -12,9 +12,41 @@ Run next commands:
 2. `mvn clean package`
 3. `java -jar scratchgame-1.0-SNAPSHOT-jar-with-dependencies.jar --config /task/config.json --betting-amount 100`
 
-the result would:
+the result would be (depends on configuration file):
 
-`Hello world, executable-jar-example!`
+```json
+{
+  "matrix": [
+    [
+      "A",
+      "A",
+      "B"
+    ],
+    [
+      "A",
+      "+1000",
+      "B"
+    ],
+    [
+      "A",
+      "A",
+      "B"
+    ]
+  ],
+  "reward": 6600,
+  "applied_winning_combinations": {
+    "A": [
+      "same_symbol_5_times",
+      "same_symbols_vertically"
+    ],
+    "B": [
+      "same_symbol_3_times",
+      "same_symbols_vertically"
+    ]
+  },
+  "applied_bonus_symbol": "+1000"
+}
+```
 
 ## What did I learn during the assignment?
 
