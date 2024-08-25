@@ -4,6 +4,12 @@ Problem statement: You need to build a scratch game, that will generate a matrix
 from symbols(based on probabilities for each individual cell) and based on winning combintations
 user either will win or lost.
 
+## Assumptions
+
+1. I didn't handle for the scenario where the configuration file doesn't have the correct order
+   of probabilities. The length of standard_symbols in probabilities should be the same as size of
+   matrix.
+
 ## Building
 
 Run next commands:
@@ -48,6 +54,11 @@ the result would be (depends on configuration file):
 }
 ```
 
+### Decomposed task
+
+1. Deserialization of JSON (Prepared all necessary POJOs). - DONE
+2. Generate 2D matrix
+
 ## What did I learn during the assignment?
 
 ```text
@@ -64,3 +75,4 @@ during deserialization of JSON.
 ## Nice to have (TODO)
 
 1. Validation for all json structure and non-null fields.
+2. 

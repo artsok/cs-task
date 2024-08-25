@@ -1,6 +1,6 @@
 package io.artsok.scratchgame.processor;
 
-import io.artsok.scratchgame.exception.GenericProcessorException;
+import io.artsok.scratchgame.exception.GenericException;
 import io.artsok.scratchgame.pojo.probabilities.SymbolType;
 import java.awt.Point;
 import java.util.HashMap;
@@ -34,14 +34,11 @@ public class ProbabilityProcessor {
         .stream()
         .max(Map.Entry.comparingByValue());
 
-    return result.map(Map.Entry::getKey).orElseThrow(() -> new GenericProcessorException("s"));
+    return result.map(Map.Entry::getKey).orElseThrow(() -> new GenericException("s"));
   }
 
-  //Bonus symbol can be generated randomly in any cell(s) in the matrix
-
-
   /**
-   * Generate random cell.
+   * Generate random cell. Bonus symbol can be generated randomly in any cell(s) in the matrix
    *
    * @param n - int value.
    * @param m - int value.

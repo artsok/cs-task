@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import java.util.Map;
+import lombok.Builder;
 
+@Builder
 public record Result(
     List<List<String>> matrix,
     int reward, //final reward which user won
