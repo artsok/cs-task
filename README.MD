@@ -9,6 +9,7 @@ user either will win or lost.
 1. I didn't handle for the scenario where the configuration file doesn't have the correct order
    of probabilities. The length of standard_symbols in probabilities should be the same as size of
    matrix.
+2. I focused on predefined symbols from A to F. Missed from G to Z.
 
 ## Building
 
@@ -57,7 +58,8 @@ the result would be (depends on configuration file):
 ### Decomposed task
 
 1. Deserialization of JSON (Prepared all necessary POJOs). - DONE
-2. Generate 2D matrix
+2. Generate 2D matrix - DONE
+3. 
 
 ## What did I learn during the assignment?
 
@@ -70,7 +72,8 @@ during deserialization of JSON.
 ## TODO
 
 1. Delete WinSymbolGroup
-2. Check row and column, it's a valid int number (M x N != max of int)
+2. Check row and column, it's a valid int number (M x N != max of int). Can't be 0 x 0
+3. Check negative bet_amount and 0, infinite
 
 ## Nice to have (TODO)
 

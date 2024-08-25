@@ -1,12 +1,15 @@
 package io.artsok.scratchgame;
 
 import io.artsok.scratchgame.pojo.config.ConfigFile;
-import io.artsok.scratchgame.pojo.result.Result;
+import io.artsok.scratchgame.processor.BonusProcessor;
 import io.artsok.scratchgame.processor.MatrixProcessor;
 import io.artsok.scratchgame.processor.ProbabilityProcessor;
+import io.artsok.scratchgame.processor.RewardCalculationProcessor;
+import io.artsok.scratchgame.processor.WinningCombinationsProcessor;
 import io.artsok.scratchgame.util.JsonUtils;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +28,6 @@ public class App implements Runnable {
   @Option(names = "--betting-amount", description = "Betting amount", required = true)
   private double bettingAmount;
 
-
   public static void main(String[] args) {
     log.info("Hello Team!");
     int exitCode = new CommandLine(new App()).execute(args);
@@ -43,17 +45,16 @@ public class App implements Runnable {
     }
 
     log.info("Betting Amount: " + bettingAmount);
-
-    final ConfigFile configFile = JsonUtils.deserializeFromContent(configContent, ConfigFile.class);
-
+    final var configFile = JsonUtils.deserializeFromContent(configContent, ConfigFile.class);
     final var probabilityProcessor = new ProbabilityProcessor();
     final var matrixProcessor = new MatrixProcessor(probabilityProcessor);
-
-    final AppPipeline appPipeline = new AppPipeline(matrixProcessor);
-    final Result result = appPipeline.process(configFile);
+    final var winningCombinationsProcessor = new WinningCombinationsProcessor();
+    final var bonusProcessor = new BonusProcessor();
+    final var rewardCalculationProcessor = new RewardCalculationProcessor();
+    final var appPipeline = new AppPipeline(matrixProcessor, winningCombinationsProcessor,
+        bonusProcessor, rewardCalculationProcessor);
+    final var result = appPipeline.process(BigDecimal.valueOf(bettingAmount), configFile);
     log.info(JsonUtils.convertResultToJson(result));
-
-    //log.info("File context: {}", configFile);
   }
 
   /**

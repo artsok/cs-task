@@ -9,10 +9,13 @@ import lombok.Builder;
 @Builder
 public record Result(
     List<List<String>> matrix,
-    int reward, //final reward which user won
-    @JsonProperty("applied_winning_combinations") Map<String, List<String>> appliedWinningCombinations,
+    String reward, //final reward which user won
+    @JsonProperty("applied_winning_combinations")
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("applied_bonus_symbol") String appliedBonusSymbol
+    Map<String, List<String>> appliedWinningCombinations,
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("applied_bonus_symbol")
+    String appliedBonusSymbol
 ) {
 
 }

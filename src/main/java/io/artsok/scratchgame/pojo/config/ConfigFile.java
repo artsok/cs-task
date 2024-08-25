@@ -15,7 +15,7 @@ public record ConfigFile(
     int rows,
     Map<SymbolType, Symbol> symbols,
     Probabilities probabilities,
-    @JsonProperty("win_combinations") Map<String, WinCombination> combinations
+    @JsonProperty("win_combinations") Map<String, WinCombination> winCombinations
 ) {
 
 }

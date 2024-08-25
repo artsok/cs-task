@@ -12,6 +12,7 @@ import io.artsok.scratchgame.pojo.probabilities.SymbolType;
 import java.awt.Point;
 import java.util.List;
 import java.util.Map;
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -39,13 +40,13 @@ class MatrixProcessorTest {
     var probabilities = mockProbabilities();
 
     doReturn(new Point(1, 1)).when(probabilityProcessor).generateRandomPoint(anyInt(), anyInt());
-    String[][] result = matrixProcessor.generated2DMatrix(rows, columns, probabilities);
+    Pair<String[][], String> result = matrixProcessor.generated2DMatrix(rows, columns, probabilities);
 
     assertAll("Matrix values",
-        () -> assertEquals("F", result[0][0]),
-        () -> assertEquals("A", result[0][1]),
-        () -> assertEquals("C", result[1][0]),
-        () -> assertEquals("10x", result[1][1])
+        () -> assertEquals("F", result.getKey()[0][0]),
+        () -> assertEquals("A", result.getKey()[0][1]),
+        () -> assertEquals("C", result.getKey()[1][0]),
+        () -> assertEquals("10x", result.getKey()[1][1])
     );
   }
 
