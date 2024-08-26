@@ -2,6 +2,7 @@ package io.artsok.scratchgame.pojo.symbols;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 
 /**
  * Wrapper class for the Symbol structure from the configuration class.
@@ -12,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param extra            - {@link Double} extra reward.
  */
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
+@Builder
 public record Symbol(
     SymbolCategory type,
     @JsonProperty("reward_multiplier") Double rewardMultiplier,

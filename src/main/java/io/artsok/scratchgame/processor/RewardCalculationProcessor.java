@@ -11,15 +11,15 @@ import java.util.Objects;
 
 /**
  * Reward calculation.
+ * Note (3): If one symbols matches more than winning winCombinations
+ * then reward should be multiplied. formula:
+ * (SYMBOL_1 * WIN_COMBINATION_1_FOR_SYMBOL_1 * WIN_COMBINATION_2_FOR_SYMBOL_1).
+ * Note (4): If the more than one symbols matches any winning winCombinations
+ * then reward should be summed. formula:
+ * (SYMBOL_1 * WIN_COMBINATION_1_FOR_SYMBOL_1 * WIN_COMBINATION_2_FOR_SYMBOL_1)
+ * + (SYMBOL_2 * WIN_COMBINATION_1_FOR_SYMBOL_2)
  */
 public class RewardCalculationProcessor {
-
-/*
-
-Note (3): If one symbols matches more than winning winCombinations then reward should be multiplied. formula: (SYMBOL_1 * WIN_COMBINATION_1_FOR_SYMBOL_1 * WIN_COMBINATION_2_FOR_SYMBOL_1)
-Note (4): If the more than one symbols matches any winning winCombinations then reward should be summed. formula: (SYMBOL_1 * WIN_COMBINATION_1_FOR_SYMBOL_1 * WIN_COMBINATION_2_FOR_SYMBOL_1) + (SYMBOL_2 * WIN_COMBINATION_1_FOR_SYMBOL_2)
-
- */
 
   public BigDecimal process(final Map<String, List<String>> appliedWinningCombinations,
       final SymbolType bonusSymbol, final Map<SymbolType, Symbol> symbols,
