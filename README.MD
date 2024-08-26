@@ -23,35 +23,16 @@ the result would be (depends on configuration file):
 
 ```json
 {
-  "matrix": [
-    [
-      "A",
-      "A",
-      "B"
-    ],
-    [
-      "A",
-      "+1000",
-      "B"
-    ],
-    [
-      "A",
-      "A",
-      "B"
-    ]
-  ],
-  "reward": 6600,
-  "applied_winning_combinations": {
-    "A": [
-      "same_symbol_5_times",
-      "same_symbols_vertically"
-    ],
-    "B": [
-      "same_symbol_3_times",
-      "same_symbols_vertically"
-    ]
-  },
-  "applied_bonus_symbol": "+1000"
+   "matrix": [
+      ["F", "10x", "F"],
+      ["F", "F", "F"],
+      ["F", "F", "F"]
+   ],
+   "reward": 10000,
+   "applied_winning_combinations": {
+      "F": ["same_symbol_8_times"]
+   },
+   "applied_bonus_symbol": "10x"
 }
 ```
 
@@ -59,15 +40,8 @@ the result would be (depends on configuration file):
 
 1. Deserialization of JSON (Prepared all necessary POJOs). - DONE
 2. Generate 2D matrix - DONE
-3. 
-
-## What did I learn during the assignment?
-
-```text
-The @JsonAnySetter annotation is used to deserialize JSON when the JSON structure has dynamic or previously unknown keys. 
-In your case, this annotation allows Jackson to dynamically add key-value pairs to the Map<String, WinCombination> 
-during deserialization of JSON.
-```
+3. Calculate rewards (same_symbol_X_times) - DONE
+4. Pretty JSON Output format - DONE
 
 ## TODO
 
@@ -78,4 +52,3 @@ during deserialization of JSON.
 ## Nice to have (TODO)
 
 1. Validation for all json structure and non-null fields.
-2. 
