@@ -2,6 +2,8 @@ package io.artsok.scratchgame.processor;
 
 import io.artsok.scratchgame.pojo.wincombinations.WhenCondition;
 import io.artsok.scratchgame.pojo.wincombinations.WinCombination;
+import io.artsok.scratchgame.strategy.LinearSymbolsStrategy;
+import io.artsok.scratchgame.strategy.VerticallyLinearSymbols;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,9 +32,9 @@ public class WinningCombinationsProcessor {
             Collectors.toMap(Entry::getKey, Entry::getValue)
         ));
 
-    final CompletableFuture<HashMap<String, List<String>>> sameSymbolsStrategy = CompletableFuture.supplyAsync(
+    final CompletableFuture<Map<String, List<String>>> sameSymbolsStrategy = CompletableFuture.supplyAsync(
         () -> {
-          final HashMap<String, List<String>> result = new HashMap<>();
+          final Map<String, List<String>> result = new HashMap<>();
           groupedByAction.getOrDefault(WhenCondition.SAME_SYMBOLS, Map.of())
               .forEach((name, object) -> {
                 final int sameSymbolsCount = object.count();
@@ -45,17 +47,25 @@ public class WinningCombinationsProcessor {
           return result;
         });
 
-    final CompletableFuture<HashMap<String, List<String>>> linearSymbolsStrategy = CompletableFuture.supplyAsync(
+    final CompletableFuture<Map<String, List<String>>> linearSymbolsStrategy = CompletableFuture.supplyAsync(
         () -> {
-          final HashMap<String, List<String>> result = new HashMap<>();
+          final Map<String, List<String>> result = new HashMap<>();
           groupedByAction.getOrDefault(WhenCondition.LINEAR_SYMBOLS, Map.of())
               .forEach((name, object) -> {
-                //TODO
+
+                //TODO: implement logic
+                if ("same_symbols_vertically".equalsIgnoreCase(name)) {
+                  final LinearSymbolsStrategy strategy = new VerticallyLinearSymbols();
+                  final Map<String, List<String>> process = strategy.process(matrix2D,
+                      object.coveredAreas());
+
+                }
+
               });
           return result;
         });
 
-    final CompletableFuture<HashMap<String, List<String>>> combinedFuture = sameSymbolsStrategy.thenCombine(
+    final CompletableFuture<Map<String, List<String>>> combinedFuture = sameSymbolsStrategy.thenCombine(
         linearSymbolsStrategy,
         (sameSymbolsResult, linearSymbolsResult) -> {
           //merge two results
