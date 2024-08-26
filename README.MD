@@ -43,6 +43,7 @@ the result would be (depends on configuration file):
 3. Calculate rewards (same_symbol_X_times) - DONE
 4. Pretty JSON Output format - DONE
 5. Calculation testing - DONE
+6. Algorithm for (same_symbols_vertically) - DONE
 
 ## TODO
 
