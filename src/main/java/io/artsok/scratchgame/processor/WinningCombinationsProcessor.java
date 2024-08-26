@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
@@ -57,15 +58,17 @@ public class WinningCombinationsProcessor {
     final CompletableFuture<HashMap<String, List<String>>> combinedFuture = sameSymbolsStrategy.thenCombine(
         linearSymbolsStrategy,
         (sameSymbolsResult, linearSymbolsResult) -> {
+          //merge two results
           sameSymbolsResult.forEach((key, value) ->
-              linearSymbolsResult.merge(key, value,
-                  (v1, v2) -> Stream.concat(v1.stream(), v2.stream())
-                      .toList()));
+              linearSymbolsResult
+                  .merge(key, value, (v1, v2) -> Stream.concat(v1.stream(), v2.stream()).toList()));
           return linearSymbolsResult;
         });
 
     try {
-      return combinedFuture.get();
+      return combinedFuture.get().entrySet().stream()
+          .filter(entry -> Objects.nonNull(entry.getKey()))
+          .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
       log.error("Thread was interrupted: {}", e.getMessage());

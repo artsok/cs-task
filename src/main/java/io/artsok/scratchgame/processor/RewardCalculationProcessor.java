@@ -33,8 +33,7 @@ Note (4): If the more than one symbols matches any winning winCombinations then 
 
           //From symbols we should get object for symbolName that won
           final SymbolType symbol = SymbolType.fromName(symbolName);
-          final BigDecimal symbolReward = BigDecimal.valueOf(
-              symbols.get(symbol).rewardMultiplier());
+          final BigDecimal symbolReward = BigDecimal.valueOf(symbols.get(symbol).rewardMultiplier());
 
           //For each win combination, we should map details
           final BigDecimal winCombinationReward = listOfAppliedWinningCombinations.stream()

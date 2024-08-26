@@ -29,7 +29,6 @@ public class App implements Runnable {
   private double bettingAmount;
 
   public static void main(String[] args) {
-    log.info("Hello Team!");
     int exitCode = new CommandLine(new App()).execute(args);
     System.exit(exitCode);
   }
@@ -54,7 +53,7 @@ public class App implements Runnable {
     final var appPipeline = new AppPipeline(matrixProcessor, winningCombinationsProcessor,
         bonusProcessor, rewardCalculationProcessor);
     final var result = appPipeline.process(BigDecimal.valueOf(bettingAmount), configFile);
-    log.info(JsonUtils.convertResultToJson(result));
+    System.out.println(JsonUtils.convertResultToJson(result));
   }
 
   /**

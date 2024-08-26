@@ -50,9 +50,11 @@ public class AppPipeline {
 
     return Result.builder()
         .matrix(matrix)
-        .reward(reward.toString())
+        .reward(reward.intValue())
         .appliedWinningCombinations(appliedWinningCombinations)
-        .appliedBonusSymbol(bonusSymbol.getName())
+        .appliedBonusSymbol(Optional.ofNullable(bonusSymbol)
+            .map(SymbolType::getName)
+            .orElse(null))
         .build();
   }
 

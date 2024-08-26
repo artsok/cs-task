@@ -1,6 +1,6 @@
 {
-  "columns": 4,
-  "rows": 4,
+  "columns": 3,
+  "rows": 3,
   "symbols": {
     "A": {
       "reward_multiplier": 5,
@@ -164,7 +164,7 @@
     ],
     "bonus_symbols": {
       "symbols": {
-        "10x": 1,
+        "10x": 10,
         "5x": 2,
         "+1000": 3,
         "+500": 4,
