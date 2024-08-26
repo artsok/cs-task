@@ -13,7 +13,7 @@ public record Result(
     List<List<String>> matrix,
     int reward, //final reward which user won
     @JsonProperty("applied_winning_combinations")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     Map<String, List<String>> appliedWinningCombinations,
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("applied_bonus_symbol")

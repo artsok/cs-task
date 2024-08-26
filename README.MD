@@ -42,12 +42,14 @@ the result would be (depends on configuration file):
 2. Generate 2D matrix - DONE
 3. Calculate rewards (same_symbol_X_times) - DONE
 4. Pretty JSON Output format - DONE
+5. Calculation testing - DONE
 
 ## TODO
 
 1. Delete WinSymbolGroup
 2. Check row and column, it's a valid int number (M x N != max of int). Can't be 0 x 0
 3. Check negative bet_amount and 0, infinite
+4. Check edge cases
 
 ## Nice to have (TODO)
 
